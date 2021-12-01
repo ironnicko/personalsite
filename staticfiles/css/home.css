@@ -1,0 +1,13 @@
+input,textarea {
+    border-radius: 1rem;
+    box-shadow: inset 5px 5px 10px #bebebe,inset -5px -5px 10px #fff;
+    outline: 0;
+    border: 0;
+    padding-inline: 7.5px
+}
+
+input[type=submit] {
+    border-radius: 2rem;
+    background: #e0e0e0;
+    box-shadow: 5px 5px 10px #cacaca,-5px -5px 10px #f6f6f6
+}

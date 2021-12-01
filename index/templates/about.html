@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}About{% endblock %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/about.css' %}">
+{% endblock %}
+{% block body %}
+    <div class="container-fluid">
+        <div class="row">
+            <section class="first col-md">
+                <form action="" method="post">
+                    <div class="form-group mb-3">
+                            {% csrf_token %}
+                            <!-- {{form.as_p}} -->
+                            <h1 class="display-1" id="cont">Contact Me</h1>
+                            <div class="input-group mb-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon1">Name</span>
+                                </div>
+                                <input type="text" class="form-control" name="name" id="id_name" placeholder="Name" aria-label="Username" aria-describedby="basic-addon1">
+                                </div>
+                                
+                                <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text" id="basic-addon3">Email</span>
+                                </div>
+                                <input type="text" placeholder="Email" name="email" class="form-control" id="id_email" aria-describedby="basic-addon3">
+                                </div>
+                                <div class="input-group mb-3 mt-3">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Message</span>
+                                </div>
+                                <textarea class="form-control" name="message" id="id_message" aria-label="With textarea"></textarea>
+                                </div>
+                            <input type="submit" value="Submit">
+                    </div>
+                    </form>
+            </section>
+        </div>
+    </div>
+<script>
+    // var names = JSON.parse("{{names|escapejs}}");
+</script>
+<script src="{% static 'js/about.js' %}"></script>
+{% endblock %}

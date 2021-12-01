@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Home{% endblock %}
+{% block header %}
+<link rel="stylesheet" href="{% static 'css/home.css' %}">
+{% endblock %}
+{% block body %}
+    <section id="first">
+        <div class="container">
+            <div id="welcome" class="row justify-content-md-center bg-dark">
+                <div class="col col-lg-auto">
+                    <h1 style="color: white;">Welcome</h1>
+                  </div>
+            </div>
+        </div>
+    </section>
+    <section id="second">
+        <div class="container">
+            <div id="welcome" class="row justify-content-md-center bg-dark">
+                <div class="col col-lg-auto">
+                    <h2 style="color:white">Projects</h2>
+                  </div>
+            </div>
+        </div>
+    </section>
+<script>
+    // var names = JSON.parse("{{names|escapejs}}");
+</script>
+<script src="{% static 'js/home.js' %}"></script>
+{% endblock %}
