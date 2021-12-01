@@ -1,13 +1,13 @@
-input,textarea {
-    border-radius: 1rem;
-    box-shadow: inset 5px 5px 10px #bebebe,inset -5px -5px 10px #fff;
-    outline: 0;
-    border: 0;
-    padding-inline: 7.5px
+section{
+    box-shadow: inset 3rem 0rem 0px 0px;
 }
-
-input[type=submit] {
+#welcome{
     border-radius: 2rem;
-    background: #e0e0e0;
-    box-shadow: 5px 5px 10px #cacaca,-5px -5px 10px #f6f6f6
+    overflow: hidden;
+}
+#first{
+    background-color: rgb(168, 111, 221);
+}
+#second{
+    background-color: rgb(235, 192, 112);
 }

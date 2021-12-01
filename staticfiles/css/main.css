@@ -2,11 +2,65 @@ html {
     box-sizing: border-box;
     margin: 0;
     scroll-behavior: smooth;
+    color : "white";
+    font-size: 95%
 }
 body{
-    background-image: url("../images/giphy.gif");
-    background-size: contain;
+    background-size: 201%;
+    background-position: unset;
 }
-nav{
-    width : 35%;
+
+section{
+    padding: 50vh 0;
+}
+
+#main {
+    transition: margin-left .5s;
+}
+
+#mLink{
+    position : fixed;
+}
+
+.btn:hover{
+    background-color: #111;
+}
+
+.sidenav {
+    height: 100%;
+    width: 0; 
+    position: fixed;
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #111;
+    overflow-x: hidden; 
+    padding-top: 4rem; 
+    transition: 0.5s; 
+}
+
+.sidenav a {
+    padding: 0.5rem 0.5rem 0.5rem 2rem;
+    text-decoration: none;
+    font-size: 2rem;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 2rem;
+    font-size: 3rem;
+    margin-left: 5rem;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {padding-top: 1rem;}
+    .sidenav a {font-size: 1rem;}
 }
