@@ -4,7 +4,7 @@ from .models import Person
 from json import dumps
 
 # Create your views here.
-def about(request):
+def contact(request):
     form = {
         'form':PersonForm
         }
@@ -15,7 +15,7 @@ def about(request):
         if db.is_valid():
             db.save()
     form["names"] = names
-    return render(request, "about.html", form)
+    return render(request, "contact.html", form)
 
 def home(request):
     if request.method == "GET":

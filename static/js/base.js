@@ -3,6 +3,11 @@ $(document).ready(
 )
 var prev;
 function openNav() {
+    $(".btn").css(
+        {
+            "z-index":"-1"
+        }
+    )
     document.getElementById("mySidenav").style.width = "20rem";
     document.getElementById("main").style.marginLeft = "20rem";
     prev = window.getComputedStyle(document.body).getPropertyValue("background-color")
@@ -10,6 +15,11 @@ function openNav() {
 }
 
 function closeNav() {
+    $(".btn").css(
+        {
+            "z-index":"1"
+        }
+    )
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("main").style.marginLeft = "0";
     document.body.style.backgroundColor = prev;

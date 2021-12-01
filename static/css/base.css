@@ -7,6 +7,7 @@ html {
 }
 body{
     background-size: 201%;
+    background-color: #212529;
     background-position: unset;
 }
 
@@ -58,6 +59,10 @@ section{
     right: 2rem;
     font-size: 3rem;
     margin-left: 5rem;
+}
+
+.footer{
+    padding: 10vh 0;
 }
 
 @media screen and (max-height: 450px) {

@@ -1,5 +1,11 @@
 body{
-    background-color: rgb(201, 159, 96);
+    background-color: rgb(235, 192, 112);
+}
+
+section{
+    padding: 20vh 0;
+    overflow: hidden;
+
 }
 
 input,textarea {
@@ -24,13 +30,23 @@ label{
     color : rgb(0, 0, 0);
 }
 
-.form-group{
-    position: absolute;
-    left: 25%;
-    top: 10%;
-    background-color: rgb(173, 132, 211);
-    padding: 8%;
+.input-group{
+    position: static;
+    background-color: #e0e0e0;
+    top: 10%; 
+    padding: 3rem;
+    margin: auto;
     border-radius: 1rem;
+}
+
+.btn{
+    z-index: 1;
+}
+
+.form-control,
+.input-group-text,
+.input-group{
+    z-index: auto;
 }
 
 #cont{
@@ -39,7 +55,7 @@ label{
 
 #id_message{
     overflow: auto;
-    width: 9rem;
+    height: 8rem;
 }
 
 @media only screen and (max-width: 725px) {
