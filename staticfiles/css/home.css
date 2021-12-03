@@ -11,3 +11,13 @@ section{
 #second{
     background-color: rgb(235, 192, 112);
 }
+.carousel-caption{
+    backdrop-filter: blur(0.1rem);
+}
+
+@media screen and (max-height: 500px) {
+    #carimg{
+        width: 95%;
+    }
+
+}

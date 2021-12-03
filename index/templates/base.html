@@ -18,7 +18,9 @@
       <span class="btn btn-secondary m-3" style="font-size: 2rem;" id="mLink" onclick="openNav()"></span>
 </head>
 <body>
-    <img class="mx-auto" src="{% static 'images/loader.gif' %}" id='loading_wrap' alt="">
+    <!-- <img class="loading_wrap hidden mx-auto" src="https://c.tenor.com/wfEN4Vd_GYsAAAAC/loading.gif" alt=""> -->
+    <div class="loading hidden loading--full-height">
+    </div>
     <div id="main">
         {% block body %}
         {% endblock %}

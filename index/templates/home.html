@@ -5,6 +5,7 @@
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
 {% endblock %}
 {% block body %}
+{% load mine %}
     <section id="first">
         <div class="container">
             <div id="welcome" class="row justify-content-md-center bg-dark">
@@ -16,15 +17,44 @@
     </section>
     <section id="second">
         <div class="container">
-            <div id="welcome" class="row justify-content-md-center bg-dark">
+            <div class="row justify-content-md-center bg-dark">
                 <div class="col col-lg-auto">
                     <h2 style="color:white">Projects</h2>
+                  </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner" id="carlink">
+                        {% for i,x in name.items %}
+                            {% if forloop.counter == 1 %}
+                            <div class="carousel-item active">
+                            {% else %}
+                            <div class="carousel-item">
+                            {% endif %}
+                                <a href="http://github.com/ironnicko/{{i}}">
+                                    <img width="720" id="carimg" src="{% static 'images/' %}{{x|index:0}}" class="d-block mx-auto">
+                                    <div class="carousel-caption d-none d-md-block mx-auto ">
+                                        <h5 class="car-head bg-dark w-50 p-3 m-3 mx-auto">{{i}}</h5>
+                                        <p class="lead bg-dark w-25 p-2 mx-auto">{{x|index:1}}</p>
+                                      </div>
+                                </a>
+                            </div>
+                        {% endfor %}
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                      <span class="visually-hidden">Next</span>
+                    </button>
                   </div>
             </div>
         </div>
     </section>
 <script>
-    // var names = JSON.parse("{{names|escapejs}}");
+    // var img = JSON.parse("{{img|escapejs}}");
 </script>
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

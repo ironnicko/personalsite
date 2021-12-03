@@ -1,7 +1,14 @@
 $(document).ready(
-    () => $('#loading_wrap').remove()
+    () => {
+        $('.loading hidden').remove()
+    }
 )
 var prev;
+$(".btn").css(
+    {
+        "z-index":"1"
+    }
+)
 function openNav() {
     $(".btn").css(
         {

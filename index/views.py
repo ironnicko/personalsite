@@ -18,5 +18,10 @@ def contact(request):
     return render(request, "contact.html", form)
 
 def home(request):
+    main = [("d2socials.png", "A site made to get my classmates socials out to everyone our class."), ("online-class-launcher.png", "A program made to open my online-class links on time."), ("marine-derbis.jpeg", "Project work done on marine debris for NASA Science Apps 2021 competition.")]
+    name = {i[0].split(".")[0]:(i[0], i[1]) for i in main}
     if request.method == "GET":
-        return render(request, "home.html")
+        form = {
+            "name" : name,
+            }
+        return render(request, "home.html", context=form)

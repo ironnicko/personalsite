@@ -1,3 +1,10 @@
+@keyframes fadeOut{
+    100%{
+        opacity: 0;
+        visibility: hidden;
+    }
+}
+
 html {
     box-sizing: border-box;
     margin: 0;
@@ -6,7 +13,6 @@ html {
     font-size: 95%
 }
 body{
-    background-size: 201%;
     background-color: #212529;
     background-position: unset;
 }
@@ -14,6 +20,63 @@ body{
 section{
     padding: 50vh 0;
 }
+
+.loading {
+    display: flex;
+    justify-content: center;
+    position: fixed;
+    left:40%;
+  }
+  
+  .loading--full-height {
+    align-items: center;
+    height: 100%;
+  }
+  
+  .loading::after {
+    content: "";
+    width: 50px;
+    height: 50px;
+    border: 10px solid #dddddd;
+    border-top-color: rgb(168, 111, 221);
+    border-radius: 50%;
+    transform: rotate(0.16turn);
+    animation: loading 3s ease infinite;
+  }
+  
+  @keyframes loading {
+    /* Safari support */
+    from {
+      transform: rotate(0turn);
+    }
+  
+    to {
+      transform: rotate(1turn);
+    }
+  }
+
+/* .loading_wrap{
+    z-index: 99;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.loading_wrap::after{
+    content: "";
+    width: 3rem;
+    height: 3rem;
+}
+
+.loading_wrap > img{
+    width: 100px;
+}
+*/
+.loading.hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
+
 
 #main {
     transition: margin-left .5s;
@@ -64,6 +127,7 @@ section{
 .footer{
     padding: 10vh 0;
 }
+
 
 @media screen and (max-height: 450px) {
     .sidenav {padding-top: 1rem;}
