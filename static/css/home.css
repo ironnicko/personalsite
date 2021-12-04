@@ -1,6 +1,3 @@
-section{
-    box-shadow: inset 3rem 0rem 0px 0px;
-}
 #welcome{
     border-radius: 2rem;
     overflow: hidden;
@@ -11,19 +8,17 @@ section{
 #second{
     background-color: rgb(235, 192, 112);
 }
+
 .carousel-caption{
     backdrop-filter: blur(0.1rem);
 }
 
 #carimg{
-    outline: white double 1rem;
+    object-fit: scale-down;
 }
 
 @media screen and (max-height: 815px) {
     #carimg{
         width: 80%;
-    }
-    section{
-        box-shadow: inset 0rem 0rem 0px 0px;
     }
 }
