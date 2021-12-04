@@ -77,6 +77,14 @@ section{
     animation-fill-mode: forwards;
 }
 
+.alert{
+    bottom: 0;
+    position : fixed;
+}
+.alert.hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
+}
 
 #main {
     transition: margin-left .5s;
@@ -84,6 +92,7 @@ section{
 
 #mLink{
     position: fixed;
+    top: 0;
 }
 
 .btn:hover{

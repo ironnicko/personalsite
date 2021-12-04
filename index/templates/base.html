@@ -16,6 +16,18 @@
         <a href="{% url 'contact_url' %}">Contact</a>
       </div>
       <span class="btn btn-secondary m-3" style="font-size: 2rem;" id="mLink" onclick="openNav()"></span>
+      {% if messages %}
+      {% for message in messages %}
+      <div class="container-fluid p-0">
+        <div class="alert {{ message.tags }} alert-dismissible" role="alert" >
+          <button type="button" class="btn" onclick="dismiss()" aria-label="Close">
+            <span aria-hidden="True">&times;</span>
+          </button>
+          {{ message }}
+        </div>
+      </div>
+      {% endfor %}
+      {% endif %}
 </head>
 <body>
     <!-- <img class="loading_wrap hidden mx-auto" src="https://c.tenor.com/wfEN4Vd_GYsAAAAC/loading.gif" alt=""> -->

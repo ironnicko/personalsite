@@ -77,6 +77,10 @@ section{
     animation-fill-mode: forwards;
 }
 
+.alert{
+    position : fixed;
+    margin-top: 8%;
+}
 
 #main {
     transition: margin-left .5s;
@@ -84,6 +88,7 @@ section{
 
 #mLink{
     position: fixed;
+    top: 0;
 }
 
 .btn:hover{

@@ -1,4 +1,5 @@
 from django.shortcuts import render
+from django.contrib import messages
 from .forms import PersonForm
 from .models import Person
 from json import dumps
@@ -13,7 +14,10 @@ def contact(request):
         print(request.POST)
         db = PersonForm(request.POST or None)
         if db.is_valid():
+            messages.success(request, "Message Sent Successfully!")
             db.save()
+        else:
+            messages.warning(request, "Message Failed to Send.")
     form["names"] = names
     return render(request, "contact.html", form)
 
