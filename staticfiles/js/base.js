@@ -3,6 +3,9 @@ $(document).ready(
         $('.loading hidden').remove()
     }
 )
+function dismiss(){
+    $(".alert").addClass("hidden");
+}
 var prev;
 $(".btn").css(
     {

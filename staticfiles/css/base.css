@@ -78,8 +78,12 @@ section{
 }
 
 .alert{
+    bottom: 0;
     position : fixed;
-    margin-top: 8%;
+}
+.alert.hidden{
+    animation: fadeOut 1s;
+    animation-fill-mode: forwards;
 }
 
 #main {
