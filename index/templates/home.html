@@ -17,7 +17,7 @@
     </section>
     <section id="second">
         <div class="container">
-            <div class="row justify-content-md-center bg-dark">
+            <div id="welcome" class="row justify-content-md-center bg-dark">
                 <div class="col col-lg-auto">
                     <h2 style="color:white">Projects</h2>
                   </div>
@@ -32,9 +32,9 @@
                             <div class="carousel-item">
                             {% endif %}
                                 <a href="http://github.com/ironnicko/{{i}}">
-                                    <img width="720" id="carimg" src="{% static 'images/' %}{{x|index:0}}" class="d-block mx-auto">
+                                    <img height="480" width="1024" id="carimg" src="{% static 'images/' %}{{x|index:0}}" class="d-block mx-auto">
                                     <div class="carousel-caption d-none d-md-block mx-auto ">
-                                        <h5 class="car-head bg-dark w-50 p-3 m-3 mx-auto">{{i}}</h5>
+                                        <h5 class="car-head bg-dark w-50 mx-auto">{{i}}</h5>
                                         <p class="lead bg-dark w-25 p-2 mx-auto">{{x|index:1}}</p>
                                       </div>
                                 </a>

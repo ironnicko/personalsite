@@ -15,9 +15,15 @@ section{
     backdrop-filter: blur(0.1rem);
 }
 
-@media screen and (max-height: 500px) {
-    #carimg{
-        width: 95%;
-    }
+#carimg{
+    outline: white double 1rem;
+}
 
+@media screen and (max-height: 815px) {
+    #carimg{
+        width: 80%;
+    }
+    section{
+        box-shadow: inset 0rem 0rem 0px 0px;
+    }
 }

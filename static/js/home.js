@@ -1,1 +1,4 @@
-$("#carlink").on("mouseenter mouseleave", e=>{$(".lead").toggle()})
+$("#carlink").on("mouseenter mouseleave", e=>{
+    $(".lead").toggle()
+    $(".car-head").toggle()
+})
