@@ -3,10 +3,12 @@
     overflow: hidden;
 }
 #first{
-    background-color: rgb(168, 111, 221);
+    background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
+    overflow: hidden;
+    position: relative;
 }
 #second{
-    background-color: rgb(235, 192, 112);
+    background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
 }
 
 .carousel-caption{
@@ -20,7 +22,6 @@
 .svg-circle circle{
     fill : rgb(235, 192, 112);
 }
-
 @media screen and (max-height: 815px) {
     #carimg{
         width: 80%;

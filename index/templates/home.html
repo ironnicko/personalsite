@@ -3,6 +3,11 @@
 {% block title %}Home{% endblock %}
 {% block header %}
 <link rel="stylesheet" href="{% static 'css/home.css' %}">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollTrigger.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/ScrollToPlugin.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.8.0/MotionPathPlugin.js"></script> -->
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/ScrollMagic/3.0.8/ScrollMagic.min.js"></script> -->
 {% endblock %}
 {% block body %}
 {% load mine %}
@@ -13,9 +18,7 @@
                     <h1 style="color: white;">Welcome</h1>
                   </div>
             </div>
-            <!-- <svg class="svg-circle" height="300" width="300">
-                <circle class="actual" cx="150" cy="150" r="150" />
-                </svg> -->
+            <!-- <img src="{% static 'images/basketball.png' %}" class="svg-circle" srcset=""> -->
         </div>
     </section>
     <section id="second">
