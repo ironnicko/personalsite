@@ -17,6 +17,10 @@
     object-fit: scale-down;
 }
 
+.svg-circle circle{
+    fill : rgb(235, 192, 112);
+}
+
 @media screen and (max-height: 815px) {
     #carimg{
         width: 80%;
