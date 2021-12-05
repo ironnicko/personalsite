@@ -1,3 +1,4 @@
+
 section{
     padding: 20vh 0;
     overflow: hidden;
@@ -23,15 +24,33 @@ form{
     font-size: 1rem;
 }
 
+form input, form span {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center
+}
+
 label{
     color : rgb(0, 0, 0);
 }
 
+.form-content {
+    background: #ffffff80;
+    backdrop-filter: blur(0.5rem);
+    padding: 3.5rem;
+    border-radius: 25px;
+    margin: 5vh 10vw;
+    display: flex;
+    justify-content: center;
+    flex-direction: row;
+    opacity: .75
+}
+
 .input-group{
     position: static;
-    background-color: #e0e0e0;
+    background-color: #c2c2a1;
     top: 10%; 
-    padding: 3rem;
+    padding: 0.8rem;
     margin: auto;
     border-radius: 1rem;
 }
@@ -61,4 +80,30 @@ label{
         top: 20%;
     }
     
+}
+
+::-webkit-scrollbar {
+    width: 1rem
+}
+
+::-webkit-scrollbar-thumb {
+    background: #dadce0;
+    background-clip: padding-box;
+    border: 0.25rem solid transparent;
+    border-radius: 0.5rem;
+    box-shadow: none;
+    min-height: 3.5rem;
+}
+
+::-webkit-scrollbar-track {
+    border: 0;
+    background-color: #639
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background-color: #b0b0b0
+}
+
+::-webkit-scrollbar-thumb:active {
+    background-color: gray
 }
