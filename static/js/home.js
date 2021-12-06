@@ -6,7 +6,7 @@ $("#carlink").on("mouseenter mouseleave", e=>{
 //Animation
 gsap.registerPlugin(ScrollTrigger);
 
-var tlm = gsap.timeline();
+var tlm = gsap.timeline({delay:1});
 tlm
 .to("#welcomeText", {
     duration: 1.5,
