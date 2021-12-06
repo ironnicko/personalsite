@@ -3,42 +3,52 @@ $("#carlink").on("mouseenter mouseleave", e=>{
     $(".car-head").toggle()
 })
 
-//Animation [GSAP]
+//Animation
+gsap.registerPlugin(ScrollTrigger);
 
-const flightPath = {
-    curviness : 1.25,
-    autoRotate : true,
-    values: [
-        {x:100, y:-20}
-    ]
-}
-// gsap.registerPlugin(MotionPathPlugin);
-// const circle = $(".svg-circle")
-// const tlm = gsap.timeline()
-// tlm.to(circle, 1, {
-//     x: 100,
-//     y: -80,
-//     ease : Power1.easeInOut,
-//     rotateY: -5
-// })
-// .to(circle, 1, {
-//     x: 500,
-//     y: 200,
-//     scaleX : 2,
-//     scaleY: 2,
-//     rotateY: 5
-// })
-// .to(circle, 1, {
-//     y:"-=500" 
-// })
-
-// gsap.registerPlugin(ScrollTrigger)
-
-// tlm.set('.actual', {transformOrigin: 'center center'})
-// .fromTo('.actual', { opacity: 0, scale: 0.8, cy: "+=200"}, {opacity: 1, scale: 1, cy: 0, duration: 1, immediateRender: false})
-
-// circle.on("scroll", e => {
-//     tlm.to(circle, 1, {scaleX:2, scaleY:2})
-//     .to(circle, 1, {scaleX:1, scaleY:1})
-// }
-// )
+var tlm = gsap.timeline();
+tlm
+.to("#welcomeText", {
+    duration: 1.5,
+    x: "+=100",
+    yoyo: true,
+    ease: "cos.inOut",
+    scrollTrigger: {
+        trigger: "#welcomeText",
+        start: "top bottom",
+        toggleActions: "play pause play pause"
+    }
+})
+.to("#triangeSVGdiv", {
+    duration: 1.5,
+    y: 100,
+    repeat: -1,
+    scale: 1.1,
+    yoyo: true,
+    ease: "sine.inOut",
+    scrollTrigger: {
+        trigger: "#triangeSVGdiv",
+        start: "top bottom",
+        toggleActions: "play pause play pause"
+    }
+})
+.to("#myName", {
+    duration: 2,
+    x: "+=100",
+    ease: "cos.inOut",
+    scrollTrigger: {
+        trigger: "#myName",
+        start: "left right",
+        toggleActions: "play pause play pause"
+    }
+})
+.from("#projectDiv",{
+    duration: 1,
+    x : -1000,
+    ease: "sine.inOut",
+    scrollTrigger: {
+        trigger: "#projectDiv",
+        start: "top bottom",
+        toggleActions: "play pause play pause"
+    }
+})

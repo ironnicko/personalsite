@@ -19,9 +19,37 @@
     object-fit: scale-down;
 }
 
-.svg-circle circle{
-    fill : rgb(235, 192, 112);
+:root {
+    --dark-color: #635bff;
+    --light-color: #80e9ff;
+  }
+
+#dark{
+    fill : var(--dark-color)
 }
+#vio1{
+    fill : var(--light-color)
+}
+
+#dark1,
+#vio1,
+#dark2 {
+    transition: all 1s ease;
+}
+#dark2 {
+    transform: translateX(-100%);
+}
+svg:hover #vio1 {
+    transform: translateX(20%);
+}
+svg:hover #dark1 {
+    transform: translateX(40%);
+    opacity: 0;
+}
+svg:hover #dark2 {
+    transform: translateX(0%);
+}
+
 @media screen and (max-height: 815px) {
     #carimg{
         width: 80%;
