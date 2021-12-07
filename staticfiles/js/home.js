@@ -6,7 +6,7 @@ $("#carlink").on("mouseenter mouseleave", e=>{
 //Animation
 gsap.registerPlugin(ScrollTrigger);
 
-var tlm = gsap.timeline();
+var tlm = gsap.timeline({delay:1});
 tlm
 .to("#welcomeText", {
     duration: 1.5,
@@ -14,8 +14,9 @@ tlm
     yoyo: true,
     ease: "cos.inOut",
     scrollTrigger: {
+        scrub : 1,
         trigger: "#welcomeText",
-        start: "top bottom",
+        start: "bottom bottom",
         toggleActions: "play pause play pause"
     }
 })
@@ -25,6 +26,7 @@ tlm
     repeat: -1,
     scale: 1.1,
     yoyo: true,
+    pin: true,
     ease: "sine.inOut",
     scrollTrigger: {
         trigger: "#triangeSVGdiv",
@@ -37,18 +39,19 @@ tlm
     x: "+=100",
     ease: "cos.inOut",
     scrollTrigger: {
+        scrub : 1,
         trigger: "#myName",
         start: "left right",
         toggleActions: "play pause play pause"
     }
 })
-.from("#projectDiv",{
+gsap.from("#projectDiv",{
     duration: 1,
     x : -1000,
     ease: "sine.inOut",
     scrollTrigger: {
-        trigger: "#projectDiv",
         start: "top bottom",
+        trigger: "#projectDiv",
         toggleActions: "play pause play pause"
     }
 })
