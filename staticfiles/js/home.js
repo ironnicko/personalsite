@@ -34,7 +34,6 @@ tlm
     x: 500,
     ease: "sin.inOut",
     scrollTrigger: {
-        scrub: 1,
         trigger: "#triangeSVGdiv",
         start: "top top",
         toggleActions: "play pause play pause"

@@ -29,14 +29,13 @@ tlm
     }
 })
 .from("#cardProjects", {
-    duration: 2,
+    duration: 1,
     opacity: 0,
     x: 500,
-    ease: "sin.inOut",
+    ease: "cos.inOut",
     scrollTrigger: {
-        scrub: 1,
-        trigger: "#triangeSVGdiv",
-        start: "top top",
+        trigger: "#cardProjects",
+        start: "left right",
         toggleActions: "play pause play pause"
     }
 })
