@@ -9,7 +9,6 @@ def contact(request):
     form = {
         'form':PersonForm
         }
-    names = [i for i in Person.objects.all()]
     if request.method == "POST":
         print(request.POST)
         db = PersonForm(request.POST or None)
@@ -18,7 +17,6 @@ def contact(request):
             db.save()
         else:
             messages.warning(request, "Message Failed to Send.")
-    form["names"] = names
     return render(request, "contact.html", form)
 
 def home(request):

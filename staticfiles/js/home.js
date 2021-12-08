@@ -12,7 +12,7 @@ tlm
         scrub : 1,
         trigger: "#welcomeText",
         start: "bottom bottom",
-        toggleActions: "play pause play pause"
+        toggleActions: "play pause resume pause"
     }
 })
 .to("#triangeSVGdiv", {
@@ -25,18 +25,18 @@ tlm
     scrollTrigger: {
         trigger: "#triangeSVGdiv",
         start: "top bottom",
-        toggleActions: "play pause play pause"
+        toggleActions: "play pause resume pause"
     }
 })
 .from("#cardProjects", {
-    duration: 1,
+    duration: 1.5,
     opacity: 0,
     x: 500,
-    ease: "cos.inOut",
+    ease: "sine.out",
     scrollTrigger: {
         trigger: "#cardProjects",
         start: "left right",
-        toggleActions: "play pause play pause"
+        toggleActions: "play pause resume pause", 
     }
 })
 .to("#myName", {
@@ -45,20 +45,21 @@ tlm
     ease: "cos.inOut",
     scrollTrigger: {
         scrub : 1,
+        ease: "back",
         trigger: "#aboutmeContainer",
         start: "left right",
-        toggleActions: "play pause play pause"
+        toggleActions: "play pause resume pause"
     }
 })
 gsap.from("#skillsCard", {
-    duration: 1,
+    duration: 2,
     opacity: 0,
-    x: 100,
-    ease: "cos.inOut",
+    x: -500,
+    ease: sine.out,
     scrollTrigger: {
         trigger: "#aboutmeContainer",
         start: "left right",
-        toggleActions: "play pause play pause"
+        toggleActions: "play pause resume pause"
     }
 })
 // gsap.from("#projectDiv",{
