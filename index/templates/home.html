@@ -15,7 +15,7 @@
         <div class="container">
             <div id="welcome" class="row justify-content-md-center bg-dark">
                 <div class="col col-lg-5">
-                    <h1 id="welcomeText" style="color: white;">Welcome</h1>
+                    <h1 id="welcomeText" style="color: white;">Welcome!</h1>
                   </div>
             </div>
             <div class="col-lg-3 p-3 mx-auto" id="triangeSVGdiv">
@@ -37,63 +37,55 @@
             </div>   
         </div>
     </section>
-    <section id="aboutme">
-        <div class="container">
-            <div class="row justify-content-md-start">
-                <div class="col col-md-auto d-flex">
-                    <h1 id="myName" style="color: white;">I'm Nikhil Ivannan.</h1>
-                </div>
-            </div>
-            <div class="row justify-content-md-start">
-                <div class="col-md-3 d-flex" style="color: white;">
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem in ut molestias similique! Velit porro dignissimos accusantium, voluptatum, eius, ad nihil dolore quas omnis eveniet beatae dolores culpa ipsa cum!
-                </div>
-            </div>
-        </div>
-    </section>
     <section id="second">
         <div class="container" id="projectDiv">
-            <div id="welcome" class="row justify-content-md-center bg-dark">
-                <div class="col col-lg-auto">
+            <div id="project" class="row justify-content-md-center bg-dark">
+                <div class="col col-sm-2">
                     <h2 style="color:white">Projects</h2>
                   </div>
             </div>
             <div class="row justify-content-md-center">
-                <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
-                    <div class="carousel-inner" id="carlink">
-                        {% for i,x in name.items %}
-                            {% if forloop.counter == 1 %}
-                            <div class="carousel-item active">
-                            {% else %}
-                            <div class="carousel-item">
-                            {% endif %}
-                                <a href="http://github.com/ironnicko/{{i}}">
-                                    <img height="480" width="1024" id="carimg" src="{% static 'images/' %}{{x|index:0}}" class="d-block mx-auto">
-                                    <div class="carousel-caption d-none d-md-block mx-auto ">
-                                        <h5 class="car-head bg-dark w-50 mx-auto">{{i}}</h5>
-                                        <p class="lead bg-dark w-25 p-2 mx-auto">{{x|index:1}}</p>
-                                      </div>
-                                </a>
-                            </div>
-                        {% endfor %}
+                {% for i,x in name.items %}
+                <div class="col">
+                    <div class="card d-flex" id="card-{{i}}" style="margin: 2rem;">
+                        <div class="card-body">
+                            <img class="mx-auto" src="{% static '/images' %}/{{x|index:0}}" alt="" srcset="">
+                            <h1 class="card-title">{{i}}</h1>
+                            <p class="card-text">{{x|index:1}}</p>
+                        </div>
                     </div>
-                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
-                      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Previous</span>
-                    </button>
-                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
-                      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                      <span class="visually-hidden">Next</span>
-                    </button>
-                  </div>
+                </div>
+                {% endfor %}
             </div>
-            <!-- Images -->
-
-                
+        </div>
+    </div>
+    </section>
+    <section id="aboutme">
+        <div class="container">
+            <div class="row justify-content-md-center">
+                <div class="col col-md-auto d-flex">
+                    <h1 id="myName" style="color: white;">I'm Nikhil Ivannan.</h1>
+                </div>
+            </div>
+            <div class="row justify-content-md-center">
+                <div class="col" style="color: white;">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Autem in ut molestias similique! Velit porro dignissimos accusantium, voluptatum, eius, ad nihil dolore quas omnis eveniet beatae dolores culpa ipsa cum!
+                </div>
+                <div class="col d-flex">
+                    <div class="card d-flex">
+                        <div class="card-body">
+                            <h1 class="card-title">Skills</h1>
+                            {% for logo in logos %}
+                            <img  src="{% static 'images/' %}{{logo}}" alt="" srcset="">
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 <script>
-    // var img = JSON.parse("{{img|escapejs}}");
+    var name = JSON.parse("{{ nameJS|json_script:'nameJS' }}");
 </script>
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}
