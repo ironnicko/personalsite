@@ -1,3 +1,6 @@
+body {
+    overflow-x: hidden
+}
 #welcome{
     border-radius: 2rem;
     overflow: hidden;
@@ -8,15 +11,25 @@
     position: relative;
 }
 #second{
-    background-image: linear-gradient(to top, #c1dfc4 0%, #deecdd 100%);
+    background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
 }
-
-.carousel-caption{
-    backdrop-filter: blur(0.1rem);
+#aboutme{
+    background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
-
-#carimg{
-    object-fit: scale-down;
+.card-body {
+    display: flex;
+    gap : 1rem;
+    flex-direction: column;
+}
+.card-body img{
+    max-width: 375px;
+}
+.card {
+    background-color: #d4d4d440;
+    border-radius: 2vw;
+    backdrop-filter: blur(5px);
+    transition: .5s;
+    text-align: center;
 }
 
 :root {
@@ -53,5 +66,10 @@ svg:hover #dark2 {
 @media screen and (max-height: 815px) {
     #carimg{
         width: 80%;
+    }
+    .card-body img{
+
+        min-width: 200px;
+        max-width: 225px;
     }
 }
