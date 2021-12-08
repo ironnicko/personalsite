@@ -1,13 +1,3 @@
-// $(".carousel-caption").css("backdrop-filter", "blur(0.1rem)")
-// $("#carlink").on("mouseenter mouseleave", e=>{
-//     if (e.type == "mouseenter"){
-//         gsap.to(".carousel-caption", 0.5, {opacity: 0})
-//     }
-//     else{
-//         gsap.to(".carousel-caption", 0.5, {opacity: 1})
-//     }
-// })
-
 //Animation
 gsap.registerPlugin(ScrollTrigger);
 
@@ -38,7 +28,7 @@ tlm
         toggleActions: "play pause play pause"
     }
 })
-.from(".card", {
+.from("#cardProjects", {
     duration: 0.1,
     opacity: 0,
     x: 1000,
@@ -55,7 +45,18 @@ tlm
     ease: "cos.inOut",
     scrollTrigger: {
         scrub : 1,
-        trigger: "#myName",
+        trigger: "#aboutmeContainer",
+        start: "left right",
+        toggleActions: "play pause play pause"
+    }
+})
+gsap.from("#skillsCard", {
+    duration: 1,
+    opacity: 0,
+    x: 100,
+    ease: "cos.inOut",
+    scrollTrigger: {
+        trigger: "#aboutmeContainer",
         start: "left right",
         toggleActions: "play pause play pause"
     }
