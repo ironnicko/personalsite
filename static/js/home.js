@@ -40,9 +40,9 @@ tlm
     }
 })
 .to("#myName", {
-    duration: 2,
+    duration: 1,
     x: "+=100",
-    ease: "cos.inOut",
+    ease: "cos.out",
     scrollTrigger: {
         scrub : 1,
         ease: "back",
@@ -52,7 +52,7 @@ tlm
     }
 })
 gsap.from("#skillsCard", {
-    duration: 2,
+    duration: 1,
     opacity: 0,
     x: 500,
     ease: "sine.out",
