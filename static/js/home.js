@@ -29,7 +29,7 @@ tlm
     }
 })
 .from("#cardProjects", {
-    duration: 1,
+    duration: 2,
     opacity: 0,
     x: 500,
     ease: "sin.inOut",

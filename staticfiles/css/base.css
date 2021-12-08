@@ -10,7 +10,7 @@ html {
     margin: 0;
     scroll-behavior: smooth;
     color : "white";
-    font-size: 95%
+    font-size: 95%;
 }
 body{
     background-color: #212529;
@@ -19,6 +19,7 @@ body{
 
 section{
     padding: 50vh 0;
+    overflow: hidden;
 }
 
 .loading {
@@ -77,6 +78,10 @@ section{
     animation-fill-mode: forwards;
 }
 
+img{
+    overflow: hidden;
+}
+
 .alert{
     bottom: 0;
     position : fixed;
@@ -88,13 +93,13 @@ section{
 
 #main {
     transition: margin-left .5s;
+    overflow: hidden;
 }
 
 #mLink{
     position: fixed;
     top: 0;
 }
-
 .mLink:hover{
     background-color: #111;
 }

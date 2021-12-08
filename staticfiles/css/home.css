@@ -22,6 +22,7 @@ body {
     flex-direction: column;
 }
 .card-body img{
+    object-fit: scale-down;
     max-width: 375px;
 }
 .card {
