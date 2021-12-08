@@ -54,12 +54,12 @@ tlm
 gsap.from("#skillsCard", {
     duration: 2,
     opacity: 0,
-    x: -500,
-    ease: sine.out,
+    x: 500,
+    ease: "sine.out",
     scrollTrigger: {
         trigger: "#aboutmeContainer",
         start: "left right",
-        toggleActions: "play pause resume pause"
+        toggleActions: "play pause play pause"
     }
 })
 // gsap.from("#projectDiv",{
