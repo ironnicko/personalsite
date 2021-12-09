@@ -21,12 +21,12 @@ def contact(request):
 
 def home(request):
     main = [("d2socials.png", "A site made to get my classmates socials out to everyone in our class."), ("iphone_classifier.jpeg", "A project I made while preparing for NASA SpaceApps Challenge 2021. The program does what it says: detects iPhoneXR."),("online-class-launcher.png", "A program made to open my online-class links on time."), ("marine-derbis.jpeg", "Project work done on marine debris for NASA Science Apps 2021 competition.")]
-    logos = ["python.svg", "postgresql.svg", "javascript.svg", "c.svg", "css.svg"]
+    logos = ["python", "postgresql", "javascript", "c", "git", "css"]
     name = {i[0].split(".")[0]:(i[0], i[1]) for i in main}
     if request.method == "GET":
         form = {
             "name" : name,
             "nameJS" : dumps(name),
-            "logos" : logos
+            "logos" : [i + ".svg" for i in logos]
             }
         return render(request, "home.html", context=form)
