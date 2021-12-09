@@ -1,6 +1,9 @@
 body {
     overflow-x: hidden
 }
+a{
+    text-decoration: none;
+}
 #welcome{
     border-radius: 2rem;
     overflow: hidden;
@@ -25,6 +28,12 @@ body {
 #imgCardBody{
     justify-content: stretch;
 }
+#cardProjects{
+    transition: box-shadow .3s;
+}
+#cardProjects:hover {
+    box-shadow: 0 0 1.5rem rgba(33,33,33,.8); 
+  }
 .card-body img{
     object-fit: scale-down;
     max-width: 375px;
