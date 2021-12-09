@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import PersonForm
 from .models import Person
 from json import dump, dumps
+from django.core.mail import send_mail
 
 # Create your views here.
 def contact(request):
@@ -13,8 +14,14 @@ def contact(request):
         print(request.POST)
         db = PersonForm(request.POST or None)
         if db.is_valid():
-            messages.success(request, "Message Sent Successfully!")
-            db.save()
+            try:
+                if request.POST["email"]:
+                    messages.success(request, "Message Sent Successfully!")
+                    db.save()
+                else:
+                    messages.warning(request, "Message Failed to Send.\nEnter email.")
+            except Exception as e:
+                messages.warning(request, "Message Failed to Send.")
         else:
             messages.warning(request, "Message Failed to Send.")
     return render(request, "contact.html", form)
