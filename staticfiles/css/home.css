@@ -19,7 +19,11 @@ body {
 .card-body {
     display: flex;
     gap : 1rem;
+    justify-content: space-evenly;
     flex-direction: column;
+}
+#imgCardBody{
+    justify-content: stretch;
 }
 .card-body img{
     object-fit: scale-down;
