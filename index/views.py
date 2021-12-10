@@ -19,7 +19,7 @@ def contact(request):
                 if request.POST["email"]:
                     send_mail(
                         f"Message from {request.POST['name']}",
-                        request.POST["message"]+f"\contact email: {request.POST['email']}",
+                        request.POST["message"]+f"\ncontact email: {request.POST['email']}",
                         request.POST["email"],
                         [os.getenv("EMAIL_HOST_USER"), os.getenv("MYSELF")]
                     )
