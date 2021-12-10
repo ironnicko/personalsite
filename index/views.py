@@ -4,6 +4,7 @@ from .forms import PersonForm
 from .models import Person
 from json import dump, dumps
 from django.core.mail import send_mail
+import os
 
 # Create your views here.
 def contact(request):
@@ -16,6 +17,12 @@ def contact(request):
         if db.is_valid():
             try:
                 if request.POST["email"]:
+                    send_mail(
+                        f"Message from {request.POST['name']}",
+                        request.POST["message"]+f"\contact email: {request.POST['email']}",
+                        request.POST["email"],
+                        [os.getenv("EMAIL_HOST_USER"), os.getenv("MYSELF")]
+                    )
                     messages.success(request, "Message Sent Successfully!")
                     db.save()
                 else:
