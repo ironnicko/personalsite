@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.contrib import messages
 from .forms import PersonForm
 from .models import Person
-from json import dump, dumps
+from json import dumps
 from django.core.mail import send_mail
 import os
 
@@ -34,7 +34,7 @@ def contact(request):
     return render(request, "contact.html", form)
 
 def home(request):
-    main = [("d2socials.png", "A site made to get my classmates socials out to everyone in our class.", "https://github.com/ironnicko/d2socials"), ("iphone_classifier.jpeg", "A project I made while preparing for NASA SpaceApps Challenge 2021. The program does what it says: uses AI&ML to detect an iPhone.", "https://github.com/ironnicko/iphone_classifier"),("online-class-launcher.png", "A program made to open my online-class links on time.", "https://github.com/ironnicko/online-class-launcher"), ("marine-derbis.jpeg", "Project work done on marine debris for NASA Science Apps 2021 competition.", "https://github.com/ironnicko/marine-derbis")]
+    main = [("d2socials.png", "A site made to get my classmates socials out to everyone in our class.", "https://d2socials.herokuapp.com"), ("iphone_classifier.jpeg", "A project I made while preparing for NASA SpaceApps Challenge 2021. The program does what it says: uses AI&ML to detect an iPhone.", "https://github.com/ironnicko/iphone_classifier"),("online-class-launcher.png", "A program made to open my online-class links on time.", "https://github.com/ironnicko/online-class-launcher"), ("marine-derbis.jpeg", "Project work done on marine debris for NASA Science Apps 2021 competition.", "https://github.com/ironnicko/marine-derbis")]
     logos = ["python", "postgresql", "javascript", "c", "git", "css"]
     name = {i[0].split(".")[0]:(i[0], i[1], i[2]) for i in main}
     if request.method == "GET":

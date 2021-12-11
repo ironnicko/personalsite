@@ -27,9 +27,10 @@ a{
 }
 #imgCardBody{
     justify-content: stretch;
+    transition: .5s;
 }
 #cardProjects{
-    transition: box-shadow .3s;
+    transition: box-shadow .5s;
 }
 #cardProjects:hover {
     box-shadow: 0 0 1.5rem rgba(33,33,33,.8); 
