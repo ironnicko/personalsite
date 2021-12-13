@@ -5,7 +5,7 @@ var tlm = gsap.timeline();
 tlm
 .to("#welcomeText", {
     duration: 1.5,
-    x: "+=100",
+    x: "+=200",
     yoyo: true,
     ease: "cos.inOut",
     scrollTrigger: {
