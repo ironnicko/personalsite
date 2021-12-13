@@ -32,6 +32,10 @@ a{
 #cardProjects{
     transition: box-shadow .5s;
 }
+.embrace{
+    width: 100px;
+    height: 100px;
+}
 #cardProjects:hover {
     box-shadow: 0 0 1.5rem rgba(33,33,33,.8); 
   }
