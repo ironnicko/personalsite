@@ -99,6 +99,7 @@ img{
 #mLink{
     position: fixed;
     top: 0;
+    transition: 0.5s; 
 }
 .mLink:hover{
     background-color: #111;
