@@ -5,14 +5,14 @@ var tlm = gsap.timeline();
 tlm
 .to("#welcomeText", {
     duration: 1.5,
-    x: "+=200",
+    x: "+=150",
     yoyo: true,
     ease: "cos.inOut",
     scrollTrigger: {
         scrub : 1,
         trigger: "#welcomeText",
         start: "bottom bottom",
-        toggleActions: "play pause resume pause"
+        toggleActions: "play pause play pause"
     }
 })
 .to("#triangeSVGdiv", {

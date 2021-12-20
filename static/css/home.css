@@ -6,7 +6,7 @@ a{
 }
 #welcome{
     border-radius: 2rem;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 #first{
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
@@ -18,6 +18,27 @@ a{
 }
 #aboutme{
     background-image: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+.shape{
+    background-color: #a18cd1;
+    position: relative;
+}
+.shape::after,
+.shape::before{
+    position: absolute;
+    content:'';
+    width: 10rem;
+    height: 10rem;
+    background: #a18cd1;
+    top: -38rem;
+}
+.shape::before{
+    right: 50%;
+    transform: skew(0, 20deg);
+}
+.shape::after{
+    left: 50%;
+    transform: skew(0, -20deg);
 }
 .card-body {
     display: flex;
@@ -91,4 +112,8 @@ svg:hover #dark2 {
         min-width: 200px;
         max-width: 225px;
     }
+    .shape::after,
+    .shape::before{
+        top:-37.5rem;
+}
 }

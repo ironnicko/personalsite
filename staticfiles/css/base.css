@@ -19,7 +19,7 @@ body{
 
 section{
     padding: 50vh 0;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .loading {
