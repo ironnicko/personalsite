@@ -1,8 +1,9 @@
 body {
     overflow-x: hidden
 }
-a{
+a, a:hover{
     text-decoration: none;
+    color: black;
 }
 #welcome{
     border-radius: 2rem;
@@ -40,17 +41,32 @@ a{
     left: 50%;
     transform: skew(0, -20deg);
 }
-.card-body {
+/* #projectCardBody{
+    display: flex;
+    margin: 10%;
+    padding: 5%;
+    flex-direction: row;
+    gap: 1rem;
+} */
+/* #projectCardText{
+    size: 25rem; 
+} */
+#imgCardBody{
     display: flex;
     gap : 1rem;
-    justify-content: space-evenly;
     flex-direction: column;
-}
-#imgCardBody{
     justify-content: stretch;
     transition: .5s;
 }
+#cardBodyProjects{
+    margin: 5vw 0;
+}
 #cardProjects{
+    display: flex;
+    margin: 10%;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.5rem;
     transition: box-shadow .5s;
 }
 .embrace{
@@ -61,13 +77,16 @@ a{
     box-shadow: 0 0 1.5rem rgba(33,33,33,.8); 
   }
 .card-body img{
+    align-content: center;
+    padding: 2vw 2vw;
     object-fit: scale-down;
-    max-width: 375px;
+    max-width: 25vw;
 }
 .card {
     background-color: #d4d4d440;
     border-radius: 2vw;
     backdrop-filter: blur(5px);
+    margin-top: 1rem;
     transition: .5s;
     text-align: center;
 }
@@ -115,5 +134,17 @@ svg:hover #dark2 {
     .shape::after,
     .shape::before{
         top:-37.5rem;
-}
+    }
+    #cardProjects{
+        display: flex;
+        margin: 0%;
+        justify-content: stretch;
+        flex-direction: column;
+        gap: 0.5rem;
+        transition: box-shadow .5s;
+    }
+    
+    #projectCardText{
+        font-size: 1.15rem; 
+    }
 }
