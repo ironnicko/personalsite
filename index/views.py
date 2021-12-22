@@ -3,6 +3,7 @@ from django.contrib import messages
 from .forms import PersonForm
 from .models import Person
 from json import dumps
+from datetime import datetime
 from django.core.mail import send_mail
 import os
 
@@ -41,6 +42,7 @@ def home(request):
         form = {
             "name" : name,
             "nameJS" : dumps(name),
-            "logos" : [i + ".svg" for i in logos]
+            "logos" : [i + ".svg" for i in logos],
+            "year" : datetime.now().strftime("%Y")
             }
         return render(request, "home.html", context=form)
