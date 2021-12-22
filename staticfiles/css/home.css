@@ -73,6 +73,9 @@ a, a:hover{
 #cardProjects:hover {
     box-shadow: 0 0 1.5rem rgba(33,33,33,.8); 
   }
+#cardBodyProjects .card-text{
+    text-align: center;
+}
 #imgCardBody{
     display: flex;
     gap: 1rem;
@@ -96,7 +99,7 @@ a, a:hover{
     text-align: center;
 }
 #skillsCard{
-    padding: 0 10vw;
+    padding: 0 3vw;
 }
 
 :root {
@@ -140,19 +143,10 @@ svg:hover #dark2 {
     .shape::before{
         top:-37.5rem;
     }
-    #cardProjects{
-        display: flex;
-        margin: 0%;
-        justify-content: stretch;
-        flex-direction: column;
-        gap: 0.5rem;
-        transition: box-shadow .5s;
+    #cardBodyProjects .card-text{
+        text-align: left;
     }
-    #cardProjects img{
-        max-width: 40vw;
-    }
-    
-    #projectCardText{
-        font-size: 1.15rem; 
+    #cardBodyProjects .card-title{
+        font-size: small;
     }
 }

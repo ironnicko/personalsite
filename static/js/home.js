@@ -25,7 +25,7 @@ tlm
     scrollTrigger: {
         trigger: "#triangeSVGdiv",
         start: "top bottom",
-        toggleActions: "play pause resume pause"
+        toggleActions: "play pause play pause"
     }
 })
 .from("#cardProjects", {
@@ -36,7 +36,7 @@ tlm
     scrollTrigger: {
         trigger: "#cardProjects",
         start: "left right",
-        toggleActions: "play pause resume pause", 
+        toggleActions: "play pause play pause", 
     }
 })
 .to("#myName", {
@@ -48,7 +48,7 @@ tlm
         ease: "back",
         trigger: "#aboutmeContainer",
         start: "left right",
-        toggleActions: "play pause resume pause"
+        toggleActions: "play pause play pause"
     }
 })
 gsap.from("#skillsCard", {
