@@ -10,7 +10,8 @@ import os
 # Create your views here.
 def contact(request):
     form = {
-        'form':PersonForm
+        'form':PersonForm,
+        "year" : datetime.now().strftime("%Y")
         }
     if request.method == "POST":
         print(request.POST)
