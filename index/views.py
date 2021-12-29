@@ -36,7 +36,12 @@ def contact(request):
     return render(request, "contact.html", form)
 
 def home(request):
-    main = [("d2socials.png", "A site made to get my classmates socials out to everyone in our class.", "https://d2socials.herokuapp.com"), ("iphone_classifier.jpeg", "A project I made while preparing for NASA SpaceApps Challenge 2021. The program does what it says: uses AI&ML to detect an iPhone.", "https://github.com/ironnicko/iphone_classifier"),("online-class-launcher.png", "A program made to open my online-class links on time.", "https://github.com/ironnicko/online-class-launcher"), ("marine-derbis.jpeg", "Project work done on marine debris for NASA Science Apps 2021 competition.", "https://github.com/ironnicko/marine-derbis"),("graph-for-stock.png", "Using Yahoo Finance, graph out share prices and predict prices for the next day.", "https://github.com/ironnicko/lsm-line-of-best-fit")]
+    main = [
+    ("d2socials.png", "A site made to get my classmates socials out to everyone in our class.", "https://d2socials.herokuapp.com"),
+    ("iphone_classifier.jpeg", "A project I made while preparing for NASA SpaceApps Challenge 2021. The program does what it says: uses AI&ML to detect an iPhone.", "https://github.com/ironnicko/iphone_classifier"),
+    ("online-class-launcher.png", "A program made to open my online-class links on time.", "https://github.com/ironnicko/online-class-launcher"),
+    ("graph-for-stock.png", "Using Yahoo Finance, graph out share prices and predict prices for the next day.", "https://github.com/ironnicko/lsm-line-of-best-fit")
+    ]
     logos = ["python", "postgresql", "javascript", "c", "git", "css"]
     name = {i[0].split(".")[0]:(i[0], i[1], i[2]) for i in main}
     if request.method == "GET":

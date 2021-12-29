@@ -12,6 +12,7 @@ tlm
         scrub : 1,
         trigger: "#welcomeText",
         start: "bottom bottom",
+        end: "top top",
         toggleActions: "play pause play pause"
     }
 })
@@ -23,8 +24,9 @@ tlm
     yoyo: true,
     ease: "sine.inOut",
     scrollTrigger: {
-        trigger: "#triangeSVGdiv",
+        trigger: "html",
         start: "top bottom",
+        end: "bottom top",
         toggleActions: "play pause play pause"
     }
 })
@@ -32,10 +34,13 @@ tlm
     duration: 1.5,
     opacity: 0,
     x: 500,
+    autoAlpha: 1,
     ease: "sine.out",
     scrollTrigger: {
-        trigger: "#cardProjects",
-        start: "left right",
+        scrub: 1,
+        trigger: "#second .col",
+        start: "top bottom",
+        end: "bottom top", 
         toggleActions: "play pause play pause", 
     }
 })
@@ -52,14 +57,17 @@ tlm
     }
 })
 gsap.from("#skillsCard", {
-    duration: 1,
+    duration: 0.5,
     opacity: 0,
     x: 500,
-    ease: "sine.out",
+    autoAlpha: 1,
+    ease: "power2.in",
     scrollTrigger: {
+        scrub: 1,
         trigger: "#aboutmeContainer",
         start: "left right",
-        toggleActions: "play pause play pause"
+        end: "bottom bottom",
+        toggleActions: "restart complete complete reverse"
     }
 })
 // gsap.from("#projectDiv",{

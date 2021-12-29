@@ -99,7 +99,7 @@ a, a:hover{
     text-align: center;
 }
 #skillsCard{
-    padding: 0 3vw;
+    padding: 0 1.75vw;
 }
 
 :root {
@@ -137,7 +137,8 @@ svg:hover #dark2 {
     #cardBodyProject img{
 
         min-width: 200px;
-        max-width: 225px;
+        /* max-width: 225px; */
+        max-height: fit-content;
     }
     .shape::after,
     .shape::before{
