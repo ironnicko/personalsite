@@ -2,10 +2,10 @@
 gsap.registerPlugin(ScrollTrigger);
 
 var titles = [
-    ".card-title d2socials",
-    ".card-title iphone_classifier",
-    ".card-title online-class-launcher",
-    ".card-title graph-for-stock",
+    "#d2socials",
+    "#iphone_classifier",
+    "#online-class-launcher",
+    "#graph-for-stock",
 ];
 
 var tlm = gsap.timeline();
@@ -58,11 +58,11 @@ titles.forEach(item => {
     x: 500,
     ease: "sine.out",
     scrollTrigger: {
-        scrub: 1,
+        scrub: 0.75,
         trigger: item,
-        start: "top bottom",
-        end: "bottom top", 
-        toggleActions: "play pause play pause", 
+        start: "top top",
+        end: "bottom bottom", 
+        toggleActions: "restart complete complete reverse", 
     }}
     )
 }
