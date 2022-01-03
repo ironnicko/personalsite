@@ -23,7 +23,7 @@ def contact(request):
                         f"Message from {request.POST['name']}",
                         request.POST["message"]+f"\ncontact email: {request.POST['email']}",
                         request.POST["email"],
-                        [os.getenv("EMAIL_HOST_USER"), os.getenv("MYSELF")]
+                        [os.getenv("EMAIL_HOST_USER"), "nickonicko779@gmail.com"]
                     )
                     messages.success(request, "Message Sent Successfully!")
                     db.save()
