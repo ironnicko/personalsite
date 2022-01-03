@@ -39,8 +39,9 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG =  os.getenv("DJANGO_DEBUG")
 
-ALLOWED_HOSTS = ["nikhil-i.herokuapp.com", "localhost", "127.0.0.1"]
+# ALLOWED_HOSTS = ["nikhil-i-dev.ap-south-1.elasticbeanstalk.com" ,"nikhil-i.herokuapp.com", "localhost", "127.0.0.1"]
 
+ALLOWED_HOSTS = ["*"]
 
 # Application definition
 
@@ -133,7 +134,7 @@ MESSAGE_TAGS = {
 
 LANGUAGE_CODE = 'en-us'
 
-TIME_ZONE = 'UTC'
+TIME_ZONE = 'Asia/Kolkata'
 
 USE_I18N = True
 
