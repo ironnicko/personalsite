@@ -2,3 +2,8 @@ personal/.env
 env/
 personal/settings.py
 .ebextensions/
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
+var/

@@ -22,7 +22,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = "django-insecure-&4w74e@rgc)4nyjf+x*@e_kqwb%sb*s1lc=)7yu(#=1+qam=f2"
 # CSRF_COOKIE_SECURE = True
 # CSRF_COOKIE_HTTPONLY = True
 
@@ -37,11 +37,11 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =  os.getenv("DJANGO_DEBUG")
+DEBUG =  False
 
 # ALLOWED_HOSTS = ["nikhil-i-dev.ap-south-1.elasticbeanstalk.com" ,"nikhil-i.herokuapp.com", "localhost", "127.0.0.1"]
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ["*", "nikhil-i-dev.ap-south-1.elasticbeanstalk.com"]
 
 # Application definition
 
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware', 
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -91,16 +92,10 @@ WSGI_APPLICATION = 'personal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'd93j3eki8tmkvn',
-        "PORT" : '5432',
-        "PASSWORD" : os.getenv("DB_PASSWORD"),
-        "HOST" : "ec2-54-195-246-55.eu-west-1.compute.amazonaws.com",
-        "USER" : 'rojiksxfdyodes',
-        "URI" : "postgres://rojiksxfdyodes:5823dcc560c415f47934402d22ca8c53463b6e2fd5e58e3272a004cdc07d4391@ec2-54-195-246-55.eu-west-1.compute.amazonaws.com:5432/d93j3eki8tmkvn"
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': 'db.sqlite3',
     }
 }
-
 
 # Password validation
 # https://docs.djangoproject.com/en/3.2/ref/settings/#auth-password-validators
@@ -159,6 +154,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 EMAIL_HOST = "smtp.gmail.com"
 EMAIL_PORT = "587"
-EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER")
-EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+EMAIL_HOST_USER = "nikhilivannancontact@gmail.com"
+EMAIL_HOST_PASSWORD = "Hussu6-pakbyv-quvmib"
 EMAIL_USE_TLS = True
