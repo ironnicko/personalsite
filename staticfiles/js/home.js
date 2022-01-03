@@ -1,6 +1,13 @@
 //Animation
 gsap.registerPlugin(ScrollTrigger);
 
+var titles = [
+    ".card-title d2socials",
+    ".card-title iphone_classifier",
+    ".card-title online-class-launcher",
+    ".card-title graph-for-stock",
+];
+
 var tlm = gsap.timeline();
 tlm
 .to("#welcomeText", {
@@ -30,21 +37,37 @@ tlm
         toggleActions: "play pause play pause"
     }
 })
-.from("#cardProjects", {
+// .from("#cardProjects", {
+//     duration: 1.5,
+//     opacity: 0,
+//     x: 500,
+//     autoAlpha: 1,
+//     ease: "sine.out",
+//     scrollTrigger: {
+//         scrub: 1,
+//         trigger: "#second .col",
+//         start: "top bottom",
+//         end: "bottom top", 
+//         toggleActions: "play pause play pause", 
+//     }
+// })
+titles.forEach(item => {
+    tlm.from(item, {
     duration: 1.5,
     opacity: 0,
     x: 500,
-    autoAlpha: 1,
     ease: "sine.out",
     scrollTrigger: {
         scrub: 1,
-        trigger: "#second .col",
+        trigger: item,
         start: "top bottom",
         end: "bottom top", 
         toggleActions: "play pause play pause", 
-    }
-})
-.to("#myName", {
+    }}
+    )
+}
+)
+tlm.to("#myName", {
     duration: 1,
     x: "+=100",
     ease: "cos.out",
@@ -60,10 +83,8 @@ gsap.from("#skillsCard", {
     duration: 0.5,
     opacity: 0,
     x: 500,
-    autoAlpha: 1,
-    ease: "power2.in",
+    ease: "power2.out",
     scrollTrigger: {
-        scrub: 1,
         trigger: "#aboutmeContainer",
         start: "left right",
         end: "bottom bottom",
