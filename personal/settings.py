@@ -92,8 +92,12 @@ WSGI_APPLICATION = 'personal.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'ebdb',
+        "PORT" : "5432",
+        "PASSWORD" : os.getenv("DB_PASSWORD"),
+        "HOST" : "aa1q2q4ir2e3l7w.cpqrzknz5d1j.ap-south-1.rds.amazonaws.com",
+        "USER" : "ironnicko", 
     }
 }
 
