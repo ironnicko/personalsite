@@ -7,3 +7,4 @@ personal/settings.py
 !.elasticbeanstalk/*.cfg.yml
 !.elasticbeanstalk/*.global.yml
 var/
+*/__pycache__/

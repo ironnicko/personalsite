@@ -8,6 +8,7 @@ a, a:hover{
 #welcome{
     border-radius: 2rem;
     overflow-x: hidden;
+    width: 75%;
 }
 #first{
     background-image: linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%);
@@ -134,6 +135,9 @@ svg:hover #dark2 {
 }
 
 @media screen and (max-width: 400px) {
+    #welcome{
+        width: 100%;
+    }
     #cardBodyProject img{
 
         min-width: 200px;
