@@ -11,7 +11,7 @@ var titles = [
 var tlm = gsap.timeline();
 tlm
 .from("#welcomeText", {
-    duration: 0.5,
+    duration: 2,
     x: "-=500",
     yoyo: true,
     opacity: 0, 
@@ -19,8 +19,8 @@ tlm
     scrollTrigger: {
         scrub : 1,
         trigger: "#welcomeText",
-        start: "bottom bottom",
-        end: "top top",
+        start: "center center",
+        end: "bottom bottom",
         toggleActions: "play pause play pause"
     }
 })
@@ -59,10 +59,9 @@ titles.forEach(item => {
     x: 500,
     ease: "sine.out",
     scrollTrigger: {
-        scrub: 0.75,
         trigger: item,
-        start: "top top",
-        end: "bottom bottom", 
+        start: "top 200px top",
+        end: "center bottom", 
         toggleActions: "restart complete complete reverse", 
     }}
     )
@@ -86,7 +85,7 @@ gsap.from("#skillsCard", {
     x: 500,
     ease: "power2.out",
     scrollTrigger: {
-        trigger: "#aboutmeContainer",
+        trigger: "#skillsCard",
         start: "left right",
         end: "bottom bottom",
         toggleActions: "restart complete complete reverse"

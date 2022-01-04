@@ -8,6 +8,7 @@ a, a:hover{
 #welcome{
     border-radius: 2rem;
     overflow-x: hidden;
+    transition: .5s; 
     width: 75%;
 }
 #first{
@@ -101,6 +102,10 @@ a, a:hover{
 }
 #skillsCard{
     padding: 0 1.75vw;
+}
+
+#projectDiv .col{
+    transition: .5s;
 }
 
 :root {
