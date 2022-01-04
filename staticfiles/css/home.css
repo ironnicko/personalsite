@@ -105,7 +105,7 @@ a, a:hover{
 }
 
 #projectDiv .col{
-    transition: .5s;
+    transition: 0.75s;
 }
 
 :root {
