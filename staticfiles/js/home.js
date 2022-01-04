@@ -10,10 +10,11 @@ var titles = [
 
 var tlm = gsap.timeline();
 tlm
-.to("#welcomeText", {
-    duration: 1.5,
-    x: "+=150",
+.from("#welcomeText", {
+    duration: 0.5,
+    x: "-=500",
     yoyo: true,
+    opacity: 0, 
     ease: "cos.inOut",
     scrollTrigger: {
         scrub : 1,
