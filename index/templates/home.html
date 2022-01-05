@@ -92,8 +92,9 @@
         </div>
     </section>
 
+    <!-- {{ nameJS|json_script:'nameJS' }}
 <script>
-    var name = JSON.parse("{{ nameJS|json_script:'nameJS' }}");
-</script>
+    var name = JSON.parse("nameJS");
+</script> -->
 <script src="{% static 'js/home.js' %}"></script>
 {% endblock %}

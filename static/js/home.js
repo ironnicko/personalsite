@@ -38,20 +38,7 @@ tlm
         toggleActions: "play pause play pause"
     }
 })
-// .from("#cardProjects", {
-//     duration: 1.5,
-//     opacity: 0,
-//     x: 500,
-//     autoAlpha: 1,
-//     ease: "sine.out",
-//     scrollTrigger: {
-//         scrub: 1,
-//         trigger: "#second .col",
-//         start: "top bottom",
-//         end: "bottom top", 
-//         toggleActions: "play pause play pause", 
-//     }
-// })
+
 titles.forEach(item => {
     tlm.from(item, {
     duration: 1.5,
