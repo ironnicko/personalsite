@@ -42,7 +42,7 @@ def home(request):
     ("online-class-launcher.png", "A program made to open my online-class links on time.", "https://github.com/ironnicko/online-class-launcher"),
     ("graph-for-stock.png", "Using Yahoo Finance, graph out share prices and predict prices for the next day.", "https://github.com/ironnicko/lsm-line-of-best-fit")
     ]
-    logos = ["python", "postgresql", "javascript", "c", "git", "css"]
+    logos = ["python", "postgresql", 'c++', "javascript", "c", "git", "css"]
     name = {i[0].split(".")[0]:(i[0], i[1], i[2]) for i in main}
     if request.method == "GET":
         form = {
