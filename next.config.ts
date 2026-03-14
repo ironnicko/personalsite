@@ -1,8 +1,13 @@
-import type { NextConfig } from "next";
+import createMDX from "@next/mdx";
 
-const nextConfig: NextConfig = {
-  /* config options here */
-  reactCompiler: true,
+const withMDX = createMDX({
+  options: {
+    providerImportSource: null, // 🔑 important
+  },
+});
+
+const nextConfig = {
+  pageExtensions: ["ts", "tsx", "js", "jsx", "mdx"],
 };
 
-export default nextConfig;
+export default withMDX(nextConfig);

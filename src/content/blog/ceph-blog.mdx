@@ -1,0 +1,81 @@
+---
+title: "Ceph: A Viable Alternative Object Store"
+date: "2026-03-01"
+description: "Why Ceph’s RADOS architecture makes it a compelling alternative to MinIO."
+---
+
+I recently discovered that **MinIO is no longer actively maintained**, which led me to revisit another object store I had previously considered: **Ceph**.
+
+At first glance, Ceph can feel intimidating because of the different storage interfaces it exposes:
+
+1. **CephFS** — POSIX-compliant distributed file system  
+2. **Ceph RBD** — block storage interface  
+3. **Ceph RADOSGW** — object storage compatible with S3 APIs  
+
+But after digging deeper, I realized something interesting:
+
+> **All of these interfaces are just different ways of interacting with the same underlying system.**
+
+At the core of Ceph is **RADOS (Reliable Automatic Distributed Object Store)**.
+
+Everything Ceph does ultimately flows through **RADOS**, which makes the system surprisingly elegant once you understand the abstraction.
+
+---
+
+## Ceph's Core Model
+
+Ceph is fundamentally a **distributed object store** built on a **Primary-Copy replication model**.
+
+Each **Placement Group (PG)** is assigned a **Primary OSD**, which acts as the leader responsible for sequencing writes.
+
+This *leaderful* architecture is not accidental—it exists because Ceph supports **block storage and filesystems**, which require handling **partial writes**.
+
+Partial writes introduce complexity because the system must safely perform **read-modify-write operations**. To maintain consistency, Ceph assigns a **primary node** that coordinates updates for that Placement Group.
+
+---
+
+## MinIO's Model
+
+MinIO takes a very different approach.
+
+It is a **leaderless quorum-based system** designed purely for **object storage**.
+
+Instead of allowing partial modifications to objects, MinIO enforces **immutability**:
+
+- Objects are never modified in place.
+- Updates are implemented as **new object versions**.
+
+Because of this constraint, MinIO doesn't need a leader to coordinate partial updates.
+
+Any node can coordinate a write, and as long as the **strict quorum** is satisfied, the object is safely stored.
+
+---
+
+## Trade-offs
+
+These two systems make very different design trade-offs:
+
+| System | Design Choice | Benefit | Cost |<br />
+| **Ceph** | Leaderful Primary-Copy | Supports block + filesystem workloads | Higher coordination overhead |<br />
+|------|------|------|------|<br />
+| **MinIO** | Leaderless Quorum | Extremely fast object storage | Less versatile |
+
+Ceph pays a **"management tax"** in the form of:
+
+- Placement Group peering
+- Cluster map propagation
+- Primary coordination
+
+In return, it gains the flexibility to support **multiple storage paradigms**.
+
+MinIO sacrifices that versatility in favor of a **simpler and faster data path** optimized specifically for object storage.
+
+---
+
+## Conclusion
+
+Ceph's architecture initially looks overwhelming, but once you understand that **everything revolves around RADOS**, the system becomes much easier to reason about.
+
+What looks like three separate storage systems is really just **one distributed object store with multiple interfaces layered on top**.
+
+If you want a deeper dive into how Ceph actually works internally, I highly recommend the  <a href="https://ceph.io/assets/pdfs/weil-rados-pdsw07.pdf">original paper</a> by **Sage Weil**, the creator of Ceph.
