@@ -1,25 +1,4 @@
 services:
-    traefik:
-        image: traefik:latest
-        restart: unless-stopped
-        network_mode: host
-        command:
-            - --api.dashboard=true
-            - --api.insecure=false
-            - --log.level=INFO
-            - --providers.docker=true
-            - --providers.docker.exposedbydefault=false
-            - --entrypoints.web.address=:80
-            - --entrypoints.websecure.address=:443
-            - --certificatesresolvers.letsencrypt.acme.tlschallenge=true
-            - --certificatesresolvers.letsencrypt.acme.email=nickonicko779@gmail.com
-            - --certificatesresolvers.letsencrypt.acme.storage=/letsencrypt/acme.json
-            - --entrypoints.web.http.redirections.entrypoint.to=websecure
-            - --entrypoints.web.http.redirections.entrypoint.scheme=https
-        volumes:
-          - ./traefik-letsencrypt:/letsencrypt
-          - /var/run/docker.sock:/var/run/docker.sock:ro
-
     personalsite:
       build:
         context: ./ 
@@ -27,11 +6,16 @@ services:
       image: ironnicko1413/personalsite:latest
       restart: always
       expose:
-        - "3000"
+        - "1413"
+      networks:
+        - tandem-sync_default
       labels:
         - traefik.enable=true
         - traefik.http.routers.personalsite.rule=Host(`nikhilivannan.live`)
         - traefik.http.routers.personalsite.entrypoints=websecure
         - traefik.http.routers.personalsite.tls.certresolver=letsencrypt
-        - traefik.http.services.personalsite.loadbalancer.server.port=3000
+        - traefik.http.services.personalsite.loadbalancer.server.port=1413
 
+networks:
+  tandem-sync_default:
+    external: true

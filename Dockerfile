@@ -19,7 +19,7 @@ ENV NODE_ENV=production
 
 COPY --from=builder /app ./
 
-EXPOSE 3000
+EXPOSE 1413
 
-CMD ["bun", "run", "start"]
+CMD ["bun", "run", "start", "--", "-p", "1413"]
 
