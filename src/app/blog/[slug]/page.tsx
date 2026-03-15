@@ -22,7 +22,7 @@ export default async function PostPage({
   const { meta, content } = post;
 
   return (
-    <main className="max-w-6xl mx-auto py-16 px-4">
+    <main className="max-w-6xl mx-auto pt-0 py-16 px-4">
       {/* Blog Header */}
       <header className="mb-12">
         <h1 className="text-4xl font-semibold leading-tight mb-3">
