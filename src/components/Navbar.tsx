@@ -11,6 +11,7 @@ export default function Navbar() {
         <Link href="/projects">projects</Link>
         <Link href="/blog">blog</Link>
         <Link href="/work">work</Link>
+        <Link href="https://drive.google.com/file/d/1GVmu9pAr8sQfm6XtvlIotq4MZS5RSJiJ/view">resume</Link>
       </div>
     </nav>
   );
