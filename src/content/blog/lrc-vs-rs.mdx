@@ -1,0 +1,152 @@
+---
+title: "LRC vs Reed-Solomon: Erasure Coding Trade-offs in Modern Object Storage"
+date: "2026-03-31"
+description: "Why systems like MinIO use Reed-Solomon while ACOS opts for Locally Repairable Codes to reduce reconstruction overhead. (This blog assumes you know what's MinIO, if not please go read about it.)"
+---
+
+### Modern object storage systems are built on one fundamental requirement:
+
+##  **Data must survive failures—without sacrificing performance.**
+
+Disks fail. Nodes go down. Networks partition. These things are a given to happen when dealing with scale.
+To deal with this reality, systems rely on **erasure coding** instead of simple replication.
+
+Ofc, one NEEDS replication as well, but it usually acts as backup and not as something that will help with **on-the-fly mechanism** to handle faults.
+
+### Two commonly used approaches are:
+
+- **Reed-Solomon (RS)** — widely used, mathematically optimal
+- **Locally Repairable Codes (LRC)** — optimized for repair efficiency
+
+And interestingly:
+### **MinIO uses Reed-Solomon, while ACOS chooses LRC to reduce network pressure during recovery.**
+
+---
+
+## Now what is <a href="https://www.usenix.org/conference/fast26/presentation/baron">ACOS</a>?
+
+**ACOS (Apple Cloud Object Storage Service)** is a large-scale distributed object storage system designed to handle exascale amounts of data with high durability and availability, due to the multi-tenant necessities of data storage, backups, personal photos **(iCloud)**, music libraries **(Apple Music)**, TV Shows, and Live Streaming **(Apple TV)**, and more.
+
+### Like other object stores, ACOS must:
+- Store objects reliably across failures
+- Handle frequent disk/node outages
+- Rebuild lost data efficiently
+
+### This is where **erasure coding** becomes critical.
+
+---
+
+## Why Erasure Coding?
+
+### The naive approach to durability is **replication**:
+
+- Store 3 copies → tolerate failures
+- Simple, but **expensive (3× storage cost)**
+
+### Erasure coding improves this by splitting data into fragments:
+
+- Data is divided into **k data blocks**
+- Additional **m parity blocks** are computed
+- Total: **k + m blocks**
+
+You can lose up to **m blocks** and still recover the original data.
+
+This gives:
+
+> **Much better storage efficiency than replication, with the same durability guarantees.**
+
+---
+
+## Reed-Solomon (RS)
+
+Reed-Solomon is the **classic erasure coding algorithm** used across storage systems.
+
+It works by encoding data into **k + m blocks**, such that:
+
+> **Any k blocks are sufficient to reconstruct the original data.**
+
+## Why RS is powerful
+
+- **Optimal storage efficiency**
+- Strong mathematical guarantees
+- Widely implemented and battle-tested
+
+### This is why systems like **MinIO** use RS.
+
+## The downside
+
+Recovery is expensive.
+
+To reconstruct a single missing block:
+
+- You must read **k other blocks**
+- Often from **different nodes**
+- Across the network
+
+> **Recovery = high network I/O + high latency**
+
+In large clusters, this becomes a serious bottleneck since you must gather the other k blocks from possibly across data-centers.
+
+---
+
+## Locally Repairable Codes (LRC)
+
+LRC is designed to fix exactly one problem:
+
+### **Reducing the cost of repairing failures**
+
+Instead of relying on all k blocks, LRC introduces **local parity groups**.
+
+## This means:
+
+- Each block belongs to a small group
+- Failures can often be repaired using **only a subset of nearby blocks**
+
+## Why LRC is efficient
+
+- **Lower network bandwidth usage during repair**
+- Faster reconstruction
+- Reduced cross-cluster traffic
+
+### This is why **ACOS uses LRC**.
+
+## The trade-off
+
+You pay for this efficiency:
+
+- Slightly **higher storage overhead**
+- More complex encoding scheme
+
+---
+
+
+
+## Conclusion
+
+### Erasure coding is not just about durability anymore.
+
+It’s about:
+
+- **How often failures happen**
+- **How expensive recovery is**
+- **Where your bottlenecks lie**
+
+### Reed-Solomon minimizes storage overhead.
+
+### LRC minimizes repair cost.
+
+ And in large distributed systems:
+
+> **Repair cost often dominates.**
+
+That’s why systems like ACOS are willing to trade a bit of storage efficiency for significantly better recovery performance. And also storage is generally much cheaper.
+
+---
+
+If you're designing a distributed storage system, the real question isn't:
+
+> *"Which coding scheme is optimal?"*
+
+It's:
+
+> **"What failure mode am I optimizing for?"**
