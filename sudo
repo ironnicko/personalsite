@@ -1,0 +1,11 @@
+tunnel: 4a407575-2440-4184-967e-27858315a14d
+credentials-file: /etc/cloudflared/4a407575-2440-4184-967e-27858315a14d.json
+
+ingress:
+  - hostname: nikhilivannan.live
+    service: http://localhost:1413
+
+  - hostname: ts.nikhilivannan.live
+    service: https://localhost:443
+
+  - service: http_status:404

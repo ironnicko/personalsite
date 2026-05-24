@@ -5,17 +5,5 @@ services:
         dockerfile: Dockerfile
       image: ironnicko1413/personalsite:latest
       restart: always
-      expose:
-        - "1413"
-      networks:
-        - tandem-sync_default
-      labels:
-        - traefik.enable=true
-        - traefik.http.routers.personalsite.rule=Host(`nikhilivannan.live`)
-        - traefik.http.routers.personalsite.entrypoints=websecure
-        - traefik.http.routers.personalsite.tls.certresolver=letsencrypt
-        - traefik.http.services.personalsite.loadbalancer.server.port=1413
-
-networks:
-  tandem-sync_default:
-    external: true
+      ports:
+        - "1413:1413"
