@@ -1,8 +1,13 @@
+import SectionHeading from "@/components/SectionHeading";
+
+export const metadata = { title: "Work" };
+
 type Experience = {
   company: string;
   role: string;
   date: string;
-  description?: string[];
+  location: string;
+  description: string[];
   link?: string;
 };
 
@@ -18,7 +23,8 @@ const work: Experience[] = [
   {
     company: "Nyalazone",
     role: "Software Developer Intern",
-    date: "2025/03 – 2025/07 (Noida, India)",
+    date: "Mar 2025 – Jul 2025",
+    location: "Noida, India",
     link: "https://nyalazone.ai",
     description: [
       "Built a full-stack real-time chat system using Flask, Angular, WebSockets, Redis Pub/Sub, and PostgreSQL.",
@@ -28,7 +34,8 @@ const work: Experience[] = [
   {
     company: "Dalhousie University",
     role: "MITACS Globalink Research Intern",
-    date: "2024/06 – 2024/09 (Halifax, Canada)",
+    date: "Jun 2024 – Sep 2024",
+    location: "Halifax, Canada",
     link: "https://www.mitacs.ca/our-programs/globalink-research-internship-students/",
     description: [
       "Worked on phylogenetic algorithms to analyze pathogen origins including COVID-19.",
@@ -39,31 +46,45 @@ const work: Experience[] = [
 
 export default function Work() {
   return (
-    <>
-      {work.map((job, i) => (
-        <div key={i} className="space-y-4">
-          {/* Company + Role */}
-          <h2 className="text-xl font-semibold">
-            <a
-              href={job.link}
-              className="underline decoration-red-200 underline-offset-4"
-            >
-              {job.company}
-            </a>{" "}
-            » {job.role}
-          </h2>
+    <div className="rise">
+      <SectionHeading>work</SectionHeading>
+      <div className="space-y-10">
+        {work.map((job, i) => (
+          <div key={i}>
+            <div className="flex items-baseline justify-between gap-4">
+              <h3 className="text-lg font-semibold">
+                <a
+                  href={job.link}
+                  target="_blank"
+                  className="hover:text-accent transition-colors"
+                >
+                  {job.company}
+                </a>
+                <span className="text-faded font-normal">
+                  {" "}
+                  · {job.role}
+                </span>
+              </h3>
+              <span className="shrink-0 font-mono text-xs text-faded">
+                {job.date}
+              </span>
+            </div>
 
-          {/* Date */}
-          <p className="italic text-neutral-600">{job.date}</p>
+            <p className="font-mono text-xs text-faded mt-0.5">
+              {job.location}
+            </p>
 
-          {/* Description */}
-          <div className="space-y-3 text-neutral-700 leading-relaxed">
-            {job.description.map((line, j) => (
-              <p key={j}>{line}</p>
-            ))}
+            <ul className="mt-3 space-y-2 leading-relaxed">
+              {job.description.map((line, j) => (
+                <li key={j} className="flex gap-2">
+                  <span className="text-accent select-none">–</span>
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
           </div>
-        </div>
-      ))}
-    </>
+        ))}
+      </div>
+    </div>
   );
 }

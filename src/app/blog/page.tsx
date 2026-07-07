@@ -1,28 +1,20 @@
-import { getPosts, PostMeta } from "@/lib/blog"
-import Link from "next/link"
+import PostRow from "@/components/PostRow";
+import SectionHeading from "@/components/SectionHeading";
+import { getPosts } from "@/lib/blog";
+
+export const metadata = { title: "Writing" };
 
 export default function BlogPage() {
-  const posts = getPosts()
+  const posts = getPosts();
 
   return (
-    <div>
-      {/*<h1 className="text-3xl font-semibold mb-10">Blog</h1>*/}
-
-      <div className="space-y-6 pt-0">
-        {posts.map((post: PostMeta) => (
-          <Link key={post.slug} href={`/blog/${post.slug}`}>
-            <div>
-              <h2 className="text-xl font-medium">
-                {post.title}
-              </h2>
-
-              <p className="text-sm opacity-60">
-                {post.date}
-              </p>
-            </div>
-          </Link>
+    <div className="rise">
+      <SectionHeading>writing</SectionHeading>
+      <div>
+        {posts.map((post) => (
+          <PostRow key={post.slug} post={post} />
         ))}
       </div>
     </div>
-  )
+  );
 }
