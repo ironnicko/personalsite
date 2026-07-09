@@ -6,7 +6,7 @@ type Experience = {
   company: string;
   role: string;
   date: string;
-  location: string;
+  location?: string;
   description: string[];
   link?: string;
 };
@@ -18,6 +18,9 @@ const work: Experience[] = [
     role: "Analyst Trainee",
     date: "2026/04 – Present (Chennai, India)",
     link: "https://tigeranalytics.com",
+    description: [
+    	"On Going Training..."
+    ]
 },
 
   {
