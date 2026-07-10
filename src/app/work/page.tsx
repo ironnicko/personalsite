@@ -7,21 +7,31 @@ type Experience = {
   role: string;
   date: string;
   location?: string;
-  description: string[];
+  description?: string[];
   link?: string;
 };
 
 const work: Experience[] = [
-
   {
-    company: "Tiger Analytics",
-    role: "Analyst Trainee",
-    date: "2026/04 – Present (Chennai, India)",
-    link: "https://tigeranalytics.com",
+    company: "ZAG AI",
+    role: "Principal Engineer",
+    date: "Jul 2026 - Present (Remote)",
+    link: "https://withzag.com", 
     description: [
-    	"On Going Training..."
+    	"Working on anything that breaks :}"
     ]
-},
+  }
+  ,
+  {
+    company: "Switching...",
+    role: "Service Based Companies",
+    date: "Dec 2025 – Jul 2026 (Chennai, India)",
+    link: "https://google.com",
+    description: [
+    "Worked at TCS and Tiger Analytics.",
+    "Was working on personal projects like TandemSync.",
+    ],
+  },
 
   {
     company: "Nyalazone",
@@ -73,18 +83,22 @@ export default function Work() {
               </span>
             </div>
 
-            <p className="font-mono text-xs text-faded mt-0.5">
-              {job.location}
-            </p>
+            {job.location && (
+              <p className="font-mono text-xs text-faded mt-0.5">
+                {job.location}
+              </p>
+            )}
 
-            <ul className="mt-3 space-y-2 leading-relaxed">
-              {job.description.map((line, j) => (
-                <li key={j} className="flex gap-2">
-                  <span className="text-accent select-none">–</span>
-                  <span>{line}</span>
-                </li>
-              ))}
-            </ul>
+            {job.description && (
+              <ul className="mt-3 space-y-2 leading-relaxed">
+                {job.description.map((line, j) => (
+                  <li key={j} className="flex gap-2">
+                    <span className="text-accent select-none">–</span>
+                    <span>{line}</span>
+                  </li>
+                ))}
+              </ul>
+            )}
           </div>
         ))}
       </div>

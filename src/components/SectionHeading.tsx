@@ -10,7 +10,7 @@ export default function SectionHeading({
   return (
     <div className="flex items-baseline justify-between mb-4">
       <h2 className="font-mono text-sm tracking-widest uppercase text-faded">
-        <span className="text-accent">##</span> {children}
+        {children}
       </h2>
       {href && (
         <Link

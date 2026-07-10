@@ -197,3 +197,33 @@ a {
     font-style: italic;
     color: var(--faded);
 }
+
+.prose table {
+    width: 100%;
+    margin: 1.75rem 0;
+    border-collapse: collapse;
+    font-size: 0.95em;
+    display: block;
+    overflow-x: auto;
+}
+
+.prose th,
+.prose td {
+    padding: 0.6rem 0.9rem;
+    text-align: left;
+    border-bottom: 1px dashed var(--line);
+    vertical-align: top;
+}
+
+.prose thead th {
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.8em;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--faded);
+    border-bottom: 1px solid var(--line);
+}
+
+.prose tbody tr:hover {
+    background: var(--raised);
+}

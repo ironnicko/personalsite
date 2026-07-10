@@ -4,78 +4,52 @@ date: "2026-03-01"
 description: "Why Ceph’s RADOS architecture makes it a compelling alternative to MinIO."
 ---
 
-I recently discovered that **MinIO is no longer actively maintained**, which led me to revisit another object store I had previously considered: **Ceph**.
+I recently found out that **MinIO is no longer actively maintained**. That sent me back to an object store I'd shelved a while ago because it looked like too much work: **Ceph**.
 
-At first glance, Ceph can feel intimidating because of the different storage interfaces it exposes:
+At first glance, Ceph is intimidating. It hands you three different storage interfaces and lets you figure out the rest:
 
-1. **CephFS** — POSIX-compliant distributed file system  
-2. **Ceph RBD** — block storage interface  
-3. **Ceph RADOSGW** — object storage compatible with S3 APIs  
+- **CephFS** — a POSIX-compliant distributed filesystem
+- **Ceph RBD** — a block storage device
+- **Ceph RADOSGW** — object storage with an S3-compatible API
 
-But after digging deeper, I realized something interesting:
+Three products, three mental models to learn? Not quite. Once you dig in, the trick reveals itself:
 
-> **All of these interfaces are just different ways of interacting with the same underlying system.**
+> All three interfaces are just different front-ends to the *same* underlying system.
 
-At the core of Ceph is **RADOS (Reliable Automatic Distributed Object Store)**.
+That system is **RADOS** — the *Reliable Autonomic Distributed Object Store*. Everything Ceph does eventually flows through it, which is what makes the whole thing click once it clicks.
 
-Everything Ceph does ultimately flows through **RADOS**, which makes the system surprisingly elegant once you understand the abstraction.
+## The core model
 
----
+Under the hood, Ceph is a distributed object store built on a **primary-copy replication model**.
 
-## Ceph's Core Model
+Data is bucketed into **Placement Groups (PGs)**, and each PG is assigned a **primary OSD** — the leader responsible for sequencing every write to that group. This "leaderful" design isn't an accident. Because Ceph also serves block and filesystem workloads, it has to handle **partial writes**: change 4 KB in the middle of a 1 GB volume without rewriting the whole thing.
 
-Ceph is fundamentally a **distributed object store** built on a **Primary-Copy replication model**.
+Partial writes mean **read-modify-write**, and read-modify-write means you need someone in charge to keep updates consistent. That someone is the primary OSD.
 
-Each **Placement Group (PG)** is assigned a **Primary OSD**, which acts as the leader responsible for sequencing writes.
+## How MinIO differs
 
-This *leaderful* architecture is not accidental—it exists because Ceph supports **block storage and filesystems**, which require handling **partial writes**.
-
-Partial writes introduce complexity because the system must safely perform **read-modify-write operations**. To maintain consistency, Ceph assigns a **primary node** that coordinates updates for that Placement Group.
-
----
-
-## MinIO's Model
-
-MinIO takes a very different approach.
-
-It is a **leaderless quorum-based system** designed purely for **object storage**.
-
-Instead of allowing partial modifications to objects, MinIO enforces **immutability**:
+MinIO makes the opposite bet. It's a **leaderless, quorum-based** system built purely for object storage, and it sidesteps the coordination problem by refusing to do partial writes at all:
 
 - Objects are never modified in place.
-- Updates are implemented as **new object versions**.
+- An "update" is just a brand-new version of the object.
 
-Because of this constraint, MinIO doesn't need a leader to coordinate partial updates.
+With immutability as the rule, there's nothing partial to coordinate. Any node can accept a write, and as long as a **strict quorum** acknowledges it, the object is safely stored. No leader required.
 
-Any node can coordinate a write, and as long as the **strict quorum** is satisfied, the object is safely stored.
+## The trade-off
 
----
+| | Ceph | MinIO |
+|---|---|---|
+| **Coordination** | Leaderful (primary-copy) | Leaderless (quorum) |
+| **Workloads** | Object + block + filesystem | Object only |
+| **Wins at** | Versatility | Raw object throughput |
+| **Pays for it with** | Coordination overhead | Less flexibility |
 
-## Trade-offs
+Ceph pays what I think of as a **"management tax"**: placement-group peering, cluster-map propagation, primary coordination. In exchange, it can be an object store, a block device, *and* a filesystem — all from one cluster.
 
-These two systems make very different design trade-offs:
+MinIO skips the tax entirely and pours everything into a lean, fast data path. But that speed comes from doing exactly one thing.
 
-| System | Design Choice | Benefit | Cost |<br />
-| **Ceph** | Leaderful Primary-Copy | Supports block + filesystem workloads | Higher coordination overhead |<br />
-|------|------|------|------|<br />
-| **MinIO** | Leaderless Quorum | Extremely fast object storage | Less versatile |
+## Takeaway
 
-Ceph pays a **"management tax"** in the form of:
+Ceph looks like three storage systems bolted together. It isn't. It's **one distributed object store with three interfaces layered on top**, and once you internalize that everything is RADOS underneath, the intimidation mostly evaporates.
 
-- Placement Group peering
-- Cluster map propagation
-- Primary coordination
-
-In return, it gains the flexibility to support **multiple storage paradigms**.
-
-MinIO sacrifices that versatility in favor of a **simpler and faster data path** optimized specifically for object storage.
-
----
-
-## Conclusion
-
-Ceph's architecture initially looks overwhelming, but once you understand that **everything revolves around RADOS**, the system becomes much easier to reason about.
-
-What looks like three separate storage systems is really just **one distributed object store with multiple interfaces layered on top**.
-
-If you want a deeper dive into how Ceph actually works internally, I highly recommend the  <a href="https://ceph.io/assets/pdfs/weil-rados-pdsw07.pdf">original paper</a> by **Sage Weil**, the creator of Ceph.
+If you want to go deeper, read the [original RADOS paper](https://ceph.io/assets/pdfs/weil-rados-pdsw07.pdf) by **Sage Weil**, Ceph's creator. It's short, and it's where all of this starts.

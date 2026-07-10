@@ -11,8 +11,8 @@ export default function BlogPage() {
     <div className="rise">
       <SectionHeading>writing</SectionHeading>
       <div>
-        {posts.map((post) => (
-          <PostRow key={post.slug} post={post} />
+        {posts.map((post, i) => (
+          <PostRow key={post.slug} post={post} index={i} />
         ))}
       </div>
     </div>

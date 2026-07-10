@@ -1,9 +1,0 @@
-services:
-    personalsite:
-      build:
-        context: ./ 
-        dockerfile: Dockerfile
-      image: ironnicko1413/personalsite:latest
-      restart: always
-      ports:
-        - "1413:1413"
