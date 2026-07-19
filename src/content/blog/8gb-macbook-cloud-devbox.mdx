@@ -86,20 +86,18 @@ ssh devbox && tmux attach -t work
 
 It's the difference between "remote dev is flaky" and "remote dev is better than local."
 
-### 5. Sessions as a markdown file
+### 5. Wrap the lifecycle in a Claude Code skill
 
-Long-running remote agents have a memory problem: *I* forget what I asked for yesterday, and a fresh agent has no idea either. So each project gets a plain `SESSIONS.md` that acts as a running handoff log:
+The box has a whole lifecycle — provision, start, stop, status, snapshot, deprovision — and I did not want to memorize a `gcloud` incantation for each. So it's one idempotent bash script with those subcommands, wrapped in a **Claude Code skill**: a plain markdown file that teaches Claude *when* and *how* to run the script, plus guardrails so it can't do anything scary on its own.
 
 ```markdown
-# Sessions
-
-## 2026-07-19 — auth refactor
-- Done: swapped session store to Redis, tests green
-- Next: migrate the /login handler, then delete the old JWT path
-- Watch out: staging still points at the old table
+# devbox skill
+When I say "start the devbox", run `./devbox start` and wait for SSH.
+Subcommands: provision · start · stop · status · snapshot · deprovision
+NEVER run `deprovision` unless I explicitly ask — it deletes the machine.
 ```
 
-At the start of a session Claude reads it; at the end it appends what changed and what's next. Where `CLAUDE.md` holds the *standing rules* for a repo, `SESSIONS.md` holds the *running state*. Reattach tmux the next morning and the context is right there — for me and for the agent.
+Now my whole morning routine is: open VSCode, type **"start the devbox"** at Claude, wait ~30 seconds, connect. The machine is cattle, not a pet — `provision` rebuilds the subnet, NAT, firewall, VM, and full dev environment from zero (or restores the latest snapshot) with one command. If it vanished tomorrow, I would not lose a minute.
 
 ### 6. Make it turn itself off
 
