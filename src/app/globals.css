@@ -227,3 +227,24 @@ a {
 .prose tbody tr:hover {
     background: var(--raised);
 }
+
+.prose figure {
+    margin: 2rem 0;
+}
+
+.prose img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid var(--line);
+}
+
+.prose figcaption {
+    margin-top: 0.6rem;
+    font-family: var(--font-geist-mono), monospace;
+    font-size: 0.78em;
+    line-height: 1.5;
+    color: var(--faded);
+    text-align: center;
+}
