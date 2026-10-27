@@ -13,7 +13,7 @@ export const projects: Project[] = [
     description:
       "A real-time ride coordination platform enabling users to create, join, and share rides",
     github: "https://github.com/ironnicko/tandem-sync",
-    demo: "https://ts.nikhilivannan.live",
+    demo: "https://ts.nikhilivannan.win",
     stack: [
       "Next.js",
       "Hostinger",
